@@ -1,3 +1,17 @@
-export default function Home() {
-  return <main className="min-h-screen bg-neutral-900" />;
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
+
+export default async function Home() {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  // Redirect based on role
+  if (user.role === "admin") {
+    redirect("/admin");
+  } else {
+    redirect("/user");
+  }
 }

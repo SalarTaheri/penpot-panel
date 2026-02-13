@@ -1,87 +1,66 @@
-# Active Context: Next.js Starter Template
+# Active Context: Penpot User Management Panel
 
-## Current State
+## Project Status: ✅ In Development
 
-**Template Status**: ✅ Ready for development
-
-The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. It's ready for AI-assisted expansion to build any type of application.
+A Persian web panel for managing self-hosted Penpot users with subscription plans and payment tracking.
 
 ## Recently Completed
 
-- [x] Base Next.js 16 setup with App Router
-- [x] TypeScript configuration with strict mode
-- [x] Tailwind CSS 4 integration
-- [x] ESLint configuration
-- [x] Memory bank documentation
-- [x] Recipe system for common features
+- [x] Created SPEC.md with full project specification
+- [x] Set up database with Drizzle ORM (SQLite)
+- [x] Created database schema (users, plans, subscriptions, payments, credits, services, user_services)
+- [x] Implemented authentication system with JWT cookies
+- [x] Built admin panel with dashboard, users, plans, payments, services management
+- [x] Built user panel with dashboard, plan management, billing, services
+- [x] Added full Persian RTL support with Vazirmatn font
+- [x] Created seed script with sample data
 
 ## Current Structure
 
 | File/Directory | Purpose | Status |
 |----------------|---------|--------|
-| `src/app/page.tsx` | Home page | ✅ Ready |
-| `src/app/layout.tsx` | Root layout | ✅ Ready |
-| `src/app/globals.css` | Global styles | ✅ Ready |
-| `.kilocode/` | AI context & recipes | ✅ Ready |
+| `src/app/login/page.tsx` | Login page | ✅ Complete |
+| `src/app/admin/page.tsx` | Admin dashboard | ✅ Complete |
+| `src/app/admin/users/page.tsx` | User management | ✅ Complete |
+| `src/app/admin/plans/page.tsx` | Plan management | ✅ Complete |
+| `src/app/admin/payments/page.tsx` | Payment history | ✅ Complete |
+| `src/app/admin/services/page.tsx` | Services management | ✅ Complete |
+| `src/app/user/page.tsx` | User dashboard | ✅ Complete |
+| `src/app/user/plan/page.tsx` | My plan | ✅ Complete |
+| `src/app/user/billing/page.tsx` | Billing history | ✅ Complete |
+| `src/app/user/services/page.tsx` | Additional services | ✅ Complete |
+| `src/db/schema.ts` | Database schema | ✅ Complete |
+| `src/lib/auth.ts` | Authentication | ✅ Complete |
+| `src/lib/utils.ts` | Utilities & translations | ✅ Complete |
 
 ## Current Focus
 
-The template is ready. Next steps depend on user requirements:
+Finalizing the implementation and testing the application.
 
-1. What type of application to build
-2. What features are needed
-3. Design/branding preferences
+## Test Credentials
 
-## Quick Start Guide
+- Admin: admin@penpot.ir / admin123
+- User: user@penpot.ir / user123
 
-### To add a new page:
+## Quick Start
 
-Create a file at `src/app/[route]/page.tsx`:
-```tsx
-export default function NewPage() {
-  return <div>New page content</div>;
-}
+```bash
+bun install          # Install dependencies
+bun db:seed          # Seed database with sample data
+bun dev              # Start development server
 ```
 
-### To add components:
+## Available Scripts
 
-Create `src/components/` directory and add components:
-```tsx
-// src/components/ui/Button.tsx
-export function Button({ children }: { children: React.ReactNode }) {
-  return <button className="px-4 py-2 bg-blue-600 text-white rounded">{children}</button>;
-}
-```
-
-### To add a database:
-
-Follow `.kilocode/recipes/add-database.md`
-
-### To add API routes:
-
-Create `src/app/api/[route]/route.ts`:
-```tsx
-import { NextResponse } from "next/server";
-
-export async function GET() {
-  return NextResponse.json({ message: "Hello" });
-}
-```
-
-## Available Recipes
-
-| Recipe | File | Use Case |
-|--------|------|----------|
-| Add Database | `.kilocode/recipes/add-database.md` | Data persistence with Drizzle + SQLite |
-
-## Pending Improvements
-
-- [ ] Add more recipes (auth, email, etc.)
-- [ ] Add example components
-- [ ] Add testing setup recipe
+| Command | Purpose |
+|---------|---------|
+| `bun db:generate` | Generate database migrations |
+| `bun db:migrate` | Run database migrations |
+| `bun db:seed` | Seed database with sample data |
 
 ## Session History
 
 | Date | Changes |
 |------|---------|
-| Initial | Template created with base setup |
+| Initial | Base Next.js 16 template |
+| Current | Full Penpot management panel implementation |
