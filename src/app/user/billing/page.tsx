@@ -1,7 +1,7 @@
 import { db } from "@/db";
 import { payments } from "@/db/schema";
 import { eq, desc } from "drizzle-orm";
-import { getCurrentUser } from "@/lib/auth";
+import { getCurrentUser } from "@/lib/auth-server";
 import { formatCurrency, formatDate, translations } from "@/lib/utils";
 import { Receipt, Download, CreditCard } from "lucide-react";
 

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Lock, Mail, AlertCircle } from "lucide-react";
 import { translations } from "@/lib/utils";
-import { authenticateUser, setSession } from "@/lib/auth";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -19,18 +18,24 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const user = await authenticateUser(email, password);
-      
-      if (!user) {
-        setError(translations.invalidCredentials);
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || translations.invalidCredentials);
         setLoading(false);
         return;
       }
 
-      await setSession(user);
-      
       // Redirect based on role
-      if (user.role === "admin") {
+      if (data.user.role === "admin") {
         router.push("/admin");
       } else {
         router.push("/user");
